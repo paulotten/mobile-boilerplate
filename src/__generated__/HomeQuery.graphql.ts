@@ -1,32 +1,51 @@
+/**
+ * @generated SignedSource<<5aff35dc92a5d1583dad6ba924eb82f8>>
+ * @lightSyntaxTransform
+ * @nogrep
+ */
+
 /* tslint:disable */
 /* eslint-disable */
 // @ts-nocheck
 
-import { ConcreteRequest } from "relay-runtime";
-export type HomeQueryVariables = {};
-export type HomeQueryResponse = {
-    readonly dummy: boolean;
+import { ConcreteRequest, Query } from 'relay-runtime';
+export type HomeQuery$variables = {};
+export type HomeQuery$data = {
+  readonly photosList: ReadonlyArray<{
+    readonly photoId: string;
+    readonly createdAt: string;
+  }>;
 };
 export type HomeQuery = {
-    readonly response: HomeQueryResponse;
-    readonly variables: HomeQueryVariables;
+  variables: HomeQuery$variables;
+  response: HomeQuery$data;
 };
-
-
-
-/*
-query HomeQuery {
-  dummy
-}
-*/
 
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "alias": null,
     "args": null,
-    "kind": "ScalarField",
-    "name": "dummy",
+    "concreteType": "PhotoSummary",
+    "kind": "LinkedField",
+    "name": "photosList",
+    "plural": true,
+    "selections": [
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "photoId",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "createdAt",
+        "storageKey": null
+      }
+    ],
     "storageKey": null
   }
 ];
@@ -48,14 +67,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "0ce91341d7e79f358dcd26ff5617e31b",
+    "cacheID": "acd281bd2a0a0d50af2d55dfcdde3fec",
     "id": null,
     "metadata": {},
     "name": "HomeQuery",
     "operationKind": "query",
-    "text": "query HomeQuery {\n  dummy\n}\n"
+    "text": "query HomeQuery {\n  photosList {\n    photoId\n    createdAt\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'e37e976f507ba2eef3e97991dcca8fb2';
+
+(node as any).hash = "f23df343d28b9768d86d2a9d4aa261ba";
+
 export default node;
