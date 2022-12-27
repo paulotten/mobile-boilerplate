@@ -49,7 +49,8 @@
     "react-native-gesture-handler": "~2.2.1",
     "react-native-screens": "~3.11.1",
     "react-relay": "^13.0.1",
-    "relay-runtime": "^13.0.1"
+    "relay-runtime": "^13.0.1",
+    "expo-camera": "~12.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

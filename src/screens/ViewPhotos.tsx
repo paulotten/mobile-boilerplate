@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from "react";
-import { ActivityIndicator, FlatList, Text, View } from "react-native";
+import { ActivityIndicator, Dimensions, FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { graphql, PreloadedQuery, usePreloadedQuery, useQueryLoader } from "react-relay";
 import { OperationType } from "relay-runtime";
 
@@ -36,12 +36,16 @@ function ViewPhotosContent({
   queryReference: PreloadedQuery<OperationType, Record<string, unknown>>;
 }): JSX.Element {
   const data = usePreloadedQuery(ViewPhotosQuery, queryReference);
-  console.log(data);
+  //console.log(data);
 
+  // <Text>[image:{photoData}]</Text>
   const Item = ({ title, photoData }) => (
     <View>
       <Text>{title}</Text>
-      <Text>[image:{photoData}]</Text>
+      <Image
+        source={{uri: `data:image/jpeg;base64,${photoData}`}}
+        style={styles.image}
+      />
     </View>
   );
   const renderItem = ({ item }) => (
@@ -58,3 +62,10 @@ function ViewPhotosContent({
     />
   )
 }
+
+const styles = StyleSheet.create({
+  image: {
+    height: Dimensions.get('window').width,
+    width: Dimensions.get('window').width,
+  },
+});
